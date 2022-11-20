@@ -34,7 +34,6 @@ if status is-interactive
 
     fish_add_path $HOME/bin
     for path in $HOME/usr/opt/*/bin
-        echo "Extending path with $path"
         fish_add_path $path
     end
 end
