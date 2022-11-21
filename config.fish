@@ -5,8 +5,8 @@ if status is-interactive
     export LANG=en_US.UTF-8
 
     alias ls='ls --color=auto -F --hyperlink=auto'
-    alias ll='ls -lisah'
-    alias l='ls -lish'
+    alias l='exa -lh'
+    alias ll='exa -lah'
     alias po='ps -o pid,tty,comm,wchan:21,cmd'
     alias ccat='pygmentize -g'
     alias bat='bat --italic-text=always'
