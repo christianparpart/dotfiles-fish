@@ -4,7 +4,8 @@ if status is-interactive
     export EDITOR="nvim"
     export LANG=en_US.UTF-8
 
-    alias ls='ls --color=auto -F --hyperlink=auto'
+    #alias ls='ls --color=auto -F --hyperlink=auto'
+    alias ls='exa -F'
     alias l='exa -lh'
     alias ll='exa -lah'
     alias po='ps -o pid,tty,comm,wchan:21,cmd'
@@ -32,8 +33,9 @@ if status is-interactive
     alias jj='nice make -j25'
     # }}}
 
-    fish_add_path $HOME/bin
     for path in $HOME/usr/opt/*/bin
-        fish_add_path $path
+        fish_add_path --prepend --move $path
     end
+    fish_add_path --prepend --move $HOME/.fzf/bin
+    fish_add_path --prepend --move $HOME/bin
 end
