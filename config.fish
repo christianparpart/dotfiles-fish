@@ -33,9 +33,12 @@ if status is-interactive
     alias jj='nice make -j25'
     # }}}
 
+    fish_add_path --prepend --move $HOME/go/bin
+    fish_add_path --prepend --move $HOME/.fzf/bin
     for path in $HOME/usr/opt/*/bin
         fish_add_path --prepend --move $path
     end
-    fish_add_path --prepend --move $HOME/.fzf/bin
     fish_add_path --prepend --move $HOME/bin
+
+    set fish_greeting $(echo "The $(hostname) says, have fun!" | lolcat -f)
 end
