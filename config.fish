@@ -3,6 +3,7 @@ if status is-interactive
 
     export EDITOR="nvim"
     export LANG=en_US.UTF-8
+    export GNUTERM="sixel"
 
     #alias ls='ls --color=auto -F --hyperlink=auto'
     alias ls='exa -F'
@@ -34,11 +35,23 @@ if status is-interactive
     # }}}
 
     fish_add_path --prepend --move $HOME/go/bin
+    fish_add_path --prepend --move $HOME/.cargo/bin
     fish_add_path --prepend --move $HOME/.fzf/bin
+    fish_add_path --prepend --move $HOME/.local/bin
     for path in $HOME/usr/opt/*/bin
         fish_add_path --prepend --move $path
     end
     fish_add_path --prepend --move $HOME/bin
 
-    set fish_greeting $(echo "The $(hostname) says, have fun!" | lolcat -f)
+    gpgconf --launch gpg-agent
+
+    set fish_greeting $(echo "$(hostname) says, have fun!$(echo)$(uptime)" | lolcat -b -f)
+    set fish_greeting ""
+    printf "$(uptime)\n ~> $(hostname) says, have fun!\n" | lolcat -b -f
+
+    set -Ux PYENV_ROOT $HOME/.pyenv
+    fish_add_path $PYENV_ROOT/bin
+    pyenv init - | source
+
+    direnv hook fish | source
 end
