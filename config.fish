@@ -43,15 +43,19 @@ if status is-interactive
     end
     fish_add_path --prepend --move $HOME/bin
 
-    gpgconf --launch gpg-agent
+    which gpgconf &>/dev/null && gpgconf --launch gpg-agent
 
-    set fish_greeting $(echo "$(hostname) says, have fun!$(echo)$(uptime)" | lolcat -b -f)
+    #set fish_greeting $(echo "$(hostname) says, have fun!$(echo)$(uptime)" | lolcat)
     set fish_greeting ""
-    printf "$(uptime)\n ~> $(hostname) says, have fun!\n" | lolcat -b -f
+    printf "$(uptime)\n ~> $(hostname) says, have fun!\n" | lolcat
 
-    set -Ux PYENV_ROOT $HOME/.pyenv
-    fish_add_path $PYENV_ROOT/bin
-    pyenv init - | source
+    if which pyenv &>/dev/null
+        set -Ux PYENV_ROOT $HOME/.pyenv
+        fish_add_path $PYENV_ROOT/bin
+        pyenv init - | source
+    end
 
-    direnv hook fish | source
+    if which direnv &>/dev/null
+        direnv hook fish | source
+    end
 end
