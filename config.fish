@@ -47,7 +47,9 @@ if status is-interactive
 
     #set fish_greeting $(echo "$(hostname) says, have fun!$(echo)$(uptime)" | lolcat)
     set fish_greeting ""
-    printf "$(uptime)\n ~> $(hostname) says, have fun!\n" | lolcat
+    # printf "$(uptime)\n ~> $(hostname) says, have fun!\n" | lolcat
+    # printf "$(uptime)\n ~> $(hostname) says, have fun!\n" | lolcat -b -f
+    fortune | lolcat -f
 
     if which pyenv &>/dev/null
         set -Ux PYENV_ROOT $HOME/.pyenv
