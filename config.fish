@@ -43,6 +43,14 @@ if status is-interactive
     end
     fish_add_path --prepend --move $HOME/bin
 
+    if test -e /dev/stdout
+        contour generate integration shell fish to /dev/stdout | source
+    end
+    # set tmpfile "/tmp/contour-shell-integration.fish"
+    # if contour generate integration shell fish to "$tmpfile"
+    #     source "$tmpfile" 2>/dev/null
+    # end
+
     which gpgconf &>/dev/null && gpgconf --launch gpg-agent
 
     #set fish_greeting $(echo "$(hostname) says, have fun!$(echo)$(uptime)" | lolcat)
