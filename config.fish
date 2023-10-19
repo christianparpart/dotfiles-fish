@@ -68,4 +68,11 @@ if status is-interactive
     if which direnv &>/dev/null
         direnv hook fish | source
     end
+
+    # FZF integration customization
+    set FZF_DEFAULT_OPTS --layout=reverse
+    set fzf_fd_opts --hidden --exclude=.git
+    set fzf_preview_dir_cmd exa --all --color=always
+
+    fzf_configure_bindings --directory=\cf --variables=\e\cv --git_status=\cg
 end
