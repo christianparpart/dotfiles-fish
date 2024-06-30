@@ -5,13 +5,17 @@ if status is-interactive
     export LANG=en_US.UTF-8
     export GNUTERM="sixel"
 
+    export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --color=16"
+
+    alias ip='ip --color=auto'
     #alias ls='ls --color=auto -F --hyperlink=auto'
     alias ls='exa -F'
     alias l='exa -lh'
     alias ll='exa -lah'
     alias po='ps -o pid,tty,comm,wchan:21,cmd'
     alias ccat='pygmentize -g'
-    alias bat='bat --italic-text=always'
+    alias bat='bat --italic-text=always --theme="Solarized (light)"'
+    alias :w='sync'
 
     alias isvg='rsvg-convert | img2sixel'
 
@@ -38,6 +42,7 @@ if status is-interactive
     fish_add_path --prepend --move $HOME/.cargo/bin
     fish_add_path --prepend --move $HOME/.fzf/bin
     fish_add_path --prepend --move $HOME/.local/bin
+    fish_add_path --prepend --move $HOME/.juliaup/bin
     for path in $HOME/usr/opt/*/bin
         fish_add_path --prepend --move $path
     end
