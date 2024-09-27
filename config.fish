@@ -5,8 +5,6 @@ if status is-interactive
     export LANG=en_US.UTF-8
     export GNUTERM="sixel"
 
-    export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --color=16"
-
     alias ip='ip --color=auto'
     #alias ls='ls --color=auto -F --hyperlink=auto'
     alias ls='exa -F'
@@ -75,7 +73,7 @@ if status is-interactive
     end
 
     # FZF integration customization
-    set FZF_DEFAULT_OPTS --layout=reverse
+    export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --color=16"
     set fzf_fd_opts --hidden --exclude=.git
     set fzf_preview_dir_cmd exa --all --color=always
 
