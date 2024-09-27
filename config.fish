@@ -12,8 +12,10 @@ if status is-interactive
     alias ll='exa -lah'
     alias po='ps -o pid,tty,comm,wchan:21,cmd'
     alias ccat='pygmentize -g'
-    alias bat='bat --italic-text=always --theme="Solarized (light)"'
     alias :w='sync'
+
+    export BAT_THEME="Monokai Extended Bright"
+    alias bat='bat --italic-text=always'
 
     alias isvg='rsvg-convert | img2sixel'
 
@@ -41,7 +43,7 @@ if status is-interactive
     fish_add_path --prepend --move $HOME/.fzf/bin
     fish_add_path --prepend --move $HOME/.local/bin
     fish_add_path --prepend --move $HOME/.juliaup/bin
-    for path in $HOME/usr/opt/*/bin
+    for path in $HOME/usr/opt/*/bin /opt/*/bin
         fish_add_path --prepend --move $path
     end
     fish_add_path --prepend --move $HOME/bin
